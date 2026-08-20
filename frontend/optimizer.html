@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Fertilizer Optimizer</title>
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+
+        <div class="logo">
+            🌱 Fertilizer Optimizer
+        </div>
+
+        <div class="nav-links">
+            <a href="index.html">Home</a>
+            <a href="optimizer.html">Optimizer</a>
+            <a href="#">Analytics</a>
+            <a href="#">Dashboard</a>
+            <a href="#">About</a>
+        </div>
+
+    </nav>
+
+
+    <!-- Main Section -->
+    <section class="optimizer-section">
+
+        <div class="optimizer-header">
+
+            <p class="tagline">
+                SMART AGRICULTURE
+            </p>
+
+            <h1>Fertilizer Usage Optimizer</h1>
+
+            <p>
+                Enter your crop, soil and environmental information
+                to get a fertilizer recommendation.
+            </p>
+
+        </div>
+
+
+        <!-- Form -->
+        <div class="optimizer-container">
+
+            <form id="optimizerForm">
+
+                <!-- Crop and Soil -->
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="crop">
+                            Crop Type
+                        </label>
+
+                        <select id="crop" required>
+
+                            <option value="">
+                                Select Crop
+                            </option>
+
+                            <option value="Rice">
+                                Rice
+                            </option>
+
+                            <option value="Wheat">
+                                Wheat
+                            </option>
+
+                            <option value="Maize">
+                                Maize
+                            </option>
+
+                            <option value="Cotton">
+                                Cotton
+                            </option>
+
+                            <option value="Sugarcane">
+                                Sugarcane
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="soil">
+                            Soil Type
+                        </label>
+
+                        <select id="soil" required>
+
+                            <option value="">
+                                Select Soil Type
+                            </option>
+
+                            <option value="Loamy">
+                                Loamy
+                            </option>
+
+                            <option value="Clay">
+                                Clay
+                            </option>
+
+                            <option value="Sandy">
+                                Sandy
+                            </option>
+
+                            <option value="Silty">
+                                Silty
+                            </option>
+
+                        </select>
+
+                    </div>
+
+                </div>
+
+
+                <!-- NPK -->
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="nitrogen">
+                            Nitrogen (N) kg/ha
+                        </label>
+
+                        <input
+                            type="number"
+                            id="nitrogen"
+                            placeholder="Example: 50"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="phosphorus">
+                            Phosphorus (P) kg/ha
+                        </label>
+
+                        <input
+                            type="number"
+                            id="phosphorus"
+                            placeholder="Example: 30"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="potassium">
+                            Potassium (K) kg/ha
+                        </label>
+
+                        <input
+                            type="number"
+                            id="potassium"
+                            placeholder="Example: 40"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Environment -->
+                <div class="form-row">
+
+                    <div class="form-group">
+
+                        <label for="ph">
+                            Soil pH
+                        </label>
+
+                        <input
+                            type="number"
+                            step="0.1"
+                            id="ph"
+                            placeholder="Example: 6.5"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="temperature">
+                            Temperature °C
+                        </label>
+
+                        <input
+                            type="number"
+                            id="temperature"
+                            placeholder="Example: 28"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label for="rainfall">
+                            Rainfall mm
+                        </label>
+
+                        <input
+                            type="number"
+                            id="rainfall"
+                            placeholder="Example: 1200"
+                            required
+                        >
+
+                    </div>
+
+                </div>
+
+
+                <!-- Land Area -->
+                <div class="form-group">
+
+                    <label for="area">
+                        Land Area (hectares)
+                    </label>
+
+                    <input
+                        type="number"
+                        step="0.1"
+                        id="area"
+                        placeholder="Example: 2"
+                        required
+                    >
+
+                </div>
+
+
+                <button
+                    type="submit"
+                    class="optimizer-btn">
+                    🌱 Optimize Fertilizer
+                </button>
+
+            </form>
+
+        </div>
+
+
+        <!-- Results -->
+        <div class="result-container">
+
+            <h2>Recommendation</h2>
+
+            <p>
+                Enter your information and click
+                "Optimize Fertilizer" to get your recommendation.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <p>
+            © 2026 Sustainable Fertilizer Usage Optimizer
+        </p>
+
+        <p>
+            Data-Driven Agriculture for a Sustainable Future 🌱
+        </p>
+
+    </footer>
+
+</body><script src="js/optimizer.js"></script>
+<footer>
+
+    <p>
+        © 2026 Sustainable Fertilizer Usage Optimizer
+    </p>
+
+    <p>
+        Data-Driven Agriculture for a Sustainable Future 🌱
+    </p>
+
+</footer>
+
+<script src="js/optimizer.js"></script>
+
+</body>
+</html>
+</html>

@@ -1,0 +1,16 @@
+Crop,Soil_Type,Nitrogen,Phosphorus,Potassium,Soil_pH,Temperature,Rainfall,Fertilizer_Used,Yield
+Rice,Loamy,80,40,40,6.5,27,1200,160,4.8
+Rice,Clay,90,45,50,6.2,28,1300,180,5.1
+Rice,Sandy,70,35,35,6.8,29,1100,140,4.2
+Wheat,Loamy,60,30,35,6.7,22,700,125,3.9
+Wheat,Clay,70,35,40,6.4,21,750,145,4.2
+Wheat,Sandy,50,25,30,7.0,23,650,105,3.4
+Maize,Loamy,75,35,45,6.3,25,900,155,4.5
+Maize,Clay,85,40,50,6.1,26,950,175,4.9
+Maize,Sandy,65,30,35,6.9,27,850,130,4.0
+Cotton,Loamy,55,25,35,6.5,30,800,115,2.8
+Cotton,Clay,65,30,40,6.2,31,850,135,3.2
+Cotton,Sandy,45,20,30,7.0,32,750,95,2.5
+Sugarcane,Loamy,100,50,60,6.5,28,1500,210,7.2
+Sugarcane,Clay,110,55,65,6.3,29,1600,230,7.6
+Sugarcane,Sandy,90,45,55,6.8,30,1400,190,6.7
