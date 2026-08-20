@@ -3,7 +3,8 @@ import streamlit as st
 st.set_page_config(
     page_title="Sustainable Fertilizer Optimizer",
     page_icon="🌱",
-    layout="wide"
+    layout="wide",
+    initial_sidebar_state="expanded"
 )
 
 st.markdown(
