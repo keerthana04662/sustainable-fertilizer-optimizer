@@ -8,14 +8,7 @@ st.set_page_config(
 
 st.title("🌾 Crop Analysis")
 
-st.write(
-    "Select a crop to view its basic nutrient requirements."
-)
-
-crop = st.selectbox(
-    "Select Crop",
-    ["Rice", "Wheat", "Maize", "Cotton", "Tomato"]
-)
+st.write("Select a crop to view its estimated nutrient requirements.")
 
 crop_data = {
     "Rice": {"N": 100, "P": 50, "K": 80},
@@ -25,9 +18,14 @@ crop_data = {
     "Tomato": {"N": 110, "P": 50, "K": 90}
 }
 
+crop = st.selectbox(
+    "🌾 Select Crop",
+    list(crop_data.keys())
+)
+
 data = crop_data[crop]
 
-st.success(f"Selected crop: {crop}")
+st.success(f"Selected Crop: {crop}")
 
 st.subheader("Recommended Nutrient Requirements")
 
@@ -41,3 +39,10 @@ with col2:
 
 with col3:
     st.metric("Potassium (K)", f"{data['K']} kg/ha")
+
+st.info(
+    "These are simplified project values for demonstration."
+)
+
+if st.button("🏠 Back to Home"):
+    st.switch_page("app.py")

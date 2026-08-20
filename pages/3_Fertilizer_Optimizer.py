@@ -8,61 +8,56 @@ st.set_page_config(
 
 st.title("🌱 Fertilizer Optimizer")
 
-st.write(
-    "Enter your soil nutrient values to calculate "
-    "the estimated fertilizer quantities."
-)
+crop_requirements = {
+    "Rice": {"N": 100, "P": 50, "K": 80},
+    "Wheat": {"N": 120, "P": 60, "K": 70},
+    "Maize": {"N": 150, "P": 60, "K": 80},
+    "Cotton": {"N": 120, "P": 50, "K": 70},
+    "Tomato": {"N": 110, "P": 50, "K": 90}
+}
 
-# Crop selection
 crop = st.selectbox(
     "🌾 Select Crop",
-    ["Rice", "Wheat", "Maize", "Cotton", "Tomato"]
+    list(crop_requirements.keys())
 )
 
-st.subheader("🧪 Soil Nutrient Values")
+st.subheader("🧪 Enter Soil Nutrient Values")
 
-# Soil inputs
 col1, col2, col3 = st.columns(3)
 
 with col1:
     soil_n = st.number_input(
         "Nitrogen (N)",
         min_value=0.0,
-        value=40.0,
-        step=1.0
+        value=40.0
     )
 
 with col2:
     soil_p = st.number_input(
         "Phosphorus (P)",
         min_value=0.0,
-        value=25.0,
-        step=1.0
+        value=25.0
     )
 
 with col3:
     soil_k = st.number_input(
         "Potassium (K)",
         min_value=0.0,
-        value=35.0,
-        step=1.0
+        value=35.0
     )
 
-st.write("")
-
-# Optimization
 if st.button(
     "🌱 Generate Fertilizer Recommendation",
-    use_container_width=True,
-    type="primary"
+    type="primary",
+    use_container_width=True
 ):
 
-    # Example nutrient requirements
-    n_required = max(100 - soil_n, 0)
-    p_required = max(50 - soil_p, 0)
-    k_required = max(80 - soil_k, 0)
+    requirement = crop_requirements[crop]
 
-    # Fertilizer calculations
+    n_required = max(requirement["N"] - soil_n, 0)
+    p_required = max(requirement["P"] - soil_p, 0)
+    k_required = max(requirement["K"] - soil_k, 0)
+
     urea = round(n_required / 0.46, 2)
     dap = round(p_required / 0.46, 2)
     mop = round(k_required / 0.60, 2)
@@ -76,25 +71,19 @@ if st.button(
     col1, col2, col3 = st.columns(3)
 
     with col1:
-        st.metric(
-            "UREA",
-            f"{urea} kg"
-        )
+        st.metric("UREA", f"{urea} kg/ha")
 
     with col2:
-        st.metric(
-            "DAP",
-            f"{dap} kg"
-        )
+        st.metric("DAP", f"{dap} kg/ha")
 
     with col3:
-        st.metric(
-            "MOP",
-            f"{mop} kg"
-        )
+        st.metric("MOP", f"{mop} kg/ha")
 
     st.info(
-        "This is an estimated project recommendation. "
-        "Actual fertilizer application should be based on "
-        "validated soil-test and crop-specific recommendations."
+        "This is a simplified project calculation. "
+        "Real fertilizer recommendations should use validated "
+        "soil tests and agricultural guidelines."
     )
+
+if st.button("🏠 Back to Home"):
+    st.switch_page("app.py")

@@ -8,11 +8,8 @@ st.set_page_config(
 
 st.title("🧪 Soil Analysis")
 
-st.write(
-    "Enter your soil nutrient values to determine their current status."
-)
+st.write("Enter soil nutrient values to analyze their status.")
 
-# Soil inputs
 col1, col2, col3 = st.columns(3)
 
 with col1:
@@ -67,8 +64,5 @@ with col3:
     else:
         st.success("Potassium: HIGH")
 
-st.info(
-    "Note: These thresholds are simplified project values. "
-    "For real agricultural decisions, use soil-test interpretation "
-    "standards appropriate to the crop and region."
-)
+if st.button("🏠 Back to Home"):
+    st.switch_page("app.py")
