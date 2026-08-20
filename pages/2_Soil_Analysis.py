@@ -2,67 +2,77 @@ import streamlit as st
 
 st.set_page_config(
     page_title="Soil Analysis",
-    page_icon="🧪",
-    layout="wide"
+    page_icon="🧪"
 )
 
 st.title("🧪 Soil Analysis")
 
-st.write("Enter soil nutrient values to analyze their status.")
+st.write(
+    "Enter your soil nutrient values to analyze "
+    "Nitrogen, Phosphorus and Potassium levels."
+)
 
-col1, col2, col3 = st.columns(3)
+st.subheader("🌱 Enter Soil Values")
 
-with col1:
-    nitrogen = st.number_input(
-        "Nitrogen (N)",
-        min_value=0.0,
-        value=40.0,
-        step=1.0
-    )
+nitrogen = st.number_input(
+    "Soil Nitrogen (N)",
+    min_value=0.0,
+    value=40.0
+)
 
-with col2:
-    phosphorus = st.number_input(
-        "Phosphorus (P)",
-        min_value=0.0,
-        value=25.0,
-        step=1.0
-    )
+phosphorus = st.number_input(
+    "Soil Phosphorus (P)",
+    min_value=0.0,
+    value=25.0
+)
 
-with col3:
-    potassium = st.number_input(
-        "Potassium (K)",
-        min_value=0.0,
-        value=35.0,
-        step=1.0
-    )
+potassium = st.number_input(
+    "Soil Potassium (K)",
+    min_value=0.0,
+    value=35.0
+)
 
-st.subheader("📊 Soil Nutrient Status")
+if st.button(
+    "🧪 Analyze Soil",
+    type="primary"
+):
+    st.success("Soil analysis completed!")
 
-col1, col2, col3 = st.columns(3)
+    st.subheader("📊 Soil Analysis Results")
 
-with col1:
+    col1, col2, col3 = st.columns(3)
+
+    with col1:
+        st.metric(
+            "Nitrogen (N)",
+            f"{nitrogen}"
+        )
+
+    with col2:
+        st.metric(
+            "Phosphorus (P)",
+            f"{phosphorus}"
+        )
+
+    with col3:
+        st.metric(
+            "Potassium (K)",
+            f"{potassium}"
+        )
+
+    st.write("### 🌱 Nutrient Status")
+
     if nitrogen < 50:
-        st.error("Nitrogen: LOW")
-    elif nitrogen < 100:
-        st.warning("Nitrogen: MODERATE")
+        st.warning("Nitrogen level: Low")
     else:
-        st.success("Nitrogen: HIGH")
+        st.success("Nitrogen level: Good")
 
-with col2:
     if phosphorus < 30:
-        st.error("Phosphorus: LOW")
-    elif phosphorus < 50:
-        st.warning("Phosphorus: MODERATE")
+        st.warning("Phosphorus level: Low")
     else:
-        st.success("Phosphorus: HIGH")
+        st.success("Phosphorus level: Good")
 
-with col3:
     if potassium < 40:
-        st.error("Potassium: LOW")
-    elif potassium < 80:
-        st.warning("Potassium: MODERATE")
+        st.warning("Potassium level: Low")
     else:
-        st.success("Potassium: HIGH")
-
-if st.button("🏠 Back to Home"):
-    st.switch_page("app.py")
+        st.success("Potassium level: Good")
