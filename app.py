@@ -6,64 +6,86 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------- CUSTOM CSS ----------
+# -----------------------------
+# GLOBAL CSS
+# -----------------------------
+
 st.markdown("""
 <style>
 
+html, body, [class*="css"] {
+    color: #17202A !important;
+}
+
 .stApp {
-    background-color: #F7FBF5;
+    background-color: #F7F9F5;
+}
+
+h1 {
+    color: #123524 !important;
+    font-weight: 800 !important;
+}
+
+h2 {
+    color: #174A2C !important;
+    font-weight: 700 !important;
+}
+
+h3 {
+    color: #1B5E20 !important;
+    font-weight: 700 !important;
+}
+
+p {
+    color: #263238 !important;
+}
+
+label {
+    color: #17202A !important;
+    font-weight: 600 !important;
 }
 
 .hero {
-    background-color: #E8F5E9;
-    padding: 45px 30px;
-    border-radius: 18px;
+    background-color: #DCEFD9;
+    padding: 50px;
+    border-radius: 20px;
     text-align: center;
-    margin-bottom: 30px;
-    border: 1px solid #C8E6C9;
+    border: 2px solid #9CCC9C;
 }
 
-.hero h1 {
-    color: #1B5E20;
-    font-size: 42px;
-    margin-bottom: 10px;
+.hero-title {
+    color: #123524 !important;
+    font-size: 45px;
+    font-weight: 800;
 }
 
-.hero p {
-    color: #455A64;
-    font-size: 19px;
+.hero-text {
+    color: #263238 !important;
+    font-size: 20px;
 }
 
 .card {
-    background-color: white;
+    background-color: #FFFFFF;
     padding: 25px;
-    border-radius: 15px;
-    border: 1px solid #DDE8DC;
+    border-radius: 16px;
+    border: 2px solid #C8DCC5;
     min-height: 180px;
-    box-shadow: 0px 3px 10px rgba(0,0,0,0.05);
 }
 
-.card h3 {
-    color: #2E7D32;
+.card-title {
+    color: #145A32 !important;
     font-size: 22px;
+    font-weight: 800;
 }
 
-.card p {
-    color: #455A64;
+.card-text {
+    color: #263238 !important;
     font-size: 16px;
-    line-height: 1.5;
-}
-
-.section {
-    color: #1B5E20;
-    font-size: 30px;
-    font-weight: 700;
-    margin-top: 35px;
 }
 
 .footer {
+    color: #37474F !important;
     text-align: center;
-    color: #607D8B;
     padding: 30px;
 }
 
@@ -71,151 +93,177 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 
-# ---------- HERO ----------
+# -----------------------------
+# SIDEBAR
+# -----------------------------
+
+st.sidebar.title("🌱 Sustainable Farm")
+
+st.sidebar.markdown(
+    "### Navigation"
+)
+
+st.sidebar.info(
+    "Use the pages on the left to analyze soil "
+    "and calculate fertilizer requirements."
+)
+
+
+# -----------------------------
+# HOME PAGE
+# -----------------------------
+
 st.markdown("""
 <div class="hero">
 
-<h1>🌱 Sustainable Fertilizer Optimizer</h1>
+<div class="hero-title">
+🌱 Sustainable Fertilizer Optimizer
+</div>
 
-<p>
+<br>
+
+<div class="hero-text">
 Smart fertilizer recommendations for efficient,
-economical, and sustainable farming.
-</p>
+economical and sustainable farming.
+</div>
 
 </div>
 """, unsafe_allow_html=True)
 
+st.write("")
 
-# ---------- FEATURES ----------
-col1, col2, col3 = st.columns(3)
-
-with col1:
-    st.markdown("""
-    <div class="card">
-        <h3>🌾 Crop Based</h3>
-        <p>
-        Select your crop and receive fertilizer recommendations
-        based on its nutrient requirements.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col2:
-    st.markdown("""
-    <div class="card">
-        <h3>🧪 Soil Analysis</h3>
-        <p>
-        Enter soil Nitrogen, Phosphorus and Potassium values
-        to estimate the nutrient requirements.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-with col3:
-    st.markdown("""
-    <div class="card">
-        <h3>🌍 Sustainable</h3>
-        <p>
-        Optimize fertilizer usage and reduce unnecessary
-        fertilizer application.
-        </p>
-    </div>
-    """, unsafe_allow_html=True)
-
-
-# ---------- CALCULATOR ----------
-st.markdown(
-    '<div class="section">🌱 Fertilizer Recommendation</div>',
-    unsafe_allow_html=True
-)
+st.header("🌾 Smart Agriculture Platform")
 
 st.write(
-    "Enter your soil nutrient values below to calculate "
-    "the recommended fertilizer quantity."
+    "This application helps farmers understand soil nutrient "
+    "levels and estimate fertilizer requirements."
 )
 
+st.write("")
 
-# ---------- INPUTS ----------
-col1, col2 = st.columns(2)
 
-with col1:
-    crop = st.selectbox(
-        "🌾 Select Crop",
-        ["Rice", "Wheat", "Maize", "Cotton", "Tomato"]
-    )
-
-with col2:
-    st.info(f"Selected crop: {crop}")
-
+# -----------------------------
+# FEATURE CARDS
+# -----------------------------
 
 col1, col2, col3 = st.columns(3)
 
 with col1:
-    soil_n = st.number_input(
-        "Soil Nitrogen (N)",
-        min_value=0.0,
-        value=40.0,
-        step=1.0
+
+    st.markdown("""
+    <div class="card">
+
+    <div class="card-title">
+    🌾 Crop Analysis
+    </div>
+
+    <br>
+
+    <div class="card-text">
+    Select a crop and understand its fertilizer
+    requirements.
+    </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.page_link(
+        "pages/1_Crop_Analysis.py",
+        label="Open Crop Analysis →"
     )
+
 
 with col2:
-    soil_p = st.number_input(
-        "Soil Phosphorus (P)",
-        min_value=0.0,
-        value=25.0,
-        step=1.0
+
+    st.markdown("""
+    <div class="card">
+
+    <div class="card-title">
+    🧪 Soil Analysis
+    </div>
+
+    <br>
+
+    <div class="card-text">
+    Analyze Nitrogen, Phosphorus and Potassium
+    levels in your soil.
+    </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.page_link(
+        "pages/2_Soil_Analysis.py",
+        label="Open Soil Analysis →"
     )
+
 
 with col3:
-    soil_k = st.number_input(
-        "Soil Potassium (K)",
-        min_value=0.0,
-        value=35.0,
-        step=1.0
+
+    st.markdown("""
+    <div class="card">
+
+    <div class="card-title">
+    🌱 Fertilizer Optimizer
+    </div>
+
+    <br>
+
+    <div class="card-text">
+    Calculate recommended Urea, DAP and MOP
+    quantities.
+    </div>
+
+    </div>
+    """, unsafe_allow_html=True)
+
+    st.page_link(
+        "pages/3_Fertilizer_Optimizer.py",
+        label="Open Optimizer →"
     )
 
 
-# ---------- BUTTON ----------
-if st.button(
-    "🌱 Optimize Fertilizer",
-    use_container_width=True,
-    type="primary"
-):
+# -----------------------------
+# HOW IT WORKS
+# -----------------------------
 
-    n_required = max(100 - soil_n, 0)
-    p_required = max(50 - soil_p, 0)
-    k_required = max(80 - soil_k, 0)
+st.write("")
+st.header("⚙️ How It Works")
 
-    urea = round(n_required / 0.46, 2)
-    dap = round(p_required / 0.46, 2)
-    mop = round(k_required / 0.60, 2)
+step1, step2, step3 = st.columns(3)
 
-    st.success(
-        "Fertilizer recommendation generated successfully!"
+with step1:
+    st.subheader("1️⃣ Enter Soil Data")
+    st.write(
+        "Provide your Nitrogen, Phosphorus and "
+        "Potassium values."
     )
 
-    st.markdown(
-        '<div class="section">📊 Recommended Fertilizer</div>',
-        unsafe_allow_html=True
+with step2:
+    st.subheader("2️⃣ Select Crop")
+    st.write(
+        "Choose the crop you want to cultivate."
     )
 
-    col1, col2, col3 = st.columns(3)
-
-    with col1:
-        st.metric("Urea", f"{urea} kg")
-
-    with col2:
-        st.metric("DAP", f"{dap} kg")
-
-    with col3:
-        st.metric("MOP", f"{mop} kg")
+with step3:
+    st.subheader("3️⃣ Get Recommendation")
+    st.write(
+        "Receive an estimated fertilizer recommendation."
+    )
 
 
-# ---------- FOOTER ----------
+# -----------------------------
+# FOOTER
+# -----------------------------
+
 st.markdown("""
 <div class="footer">
+
 🌱 Sustainable Fertilizer Optimizer
-<br>
+
+<br><br>
+
 Smart Farming • Efficient Fertilization • Sustainable Agriculture
+
 </div>
 """, unsafe_allow_html=True)
