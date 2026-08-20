@@ -6,66 +6,97 @@ st.set_page_config(
     layout="wide"
 )
 
-# ---------- CUSTOM STYLE ----------
+# ---------- CUSTOM CSS ----------
 st.markdown("""
 <style>
-.main-title {
-    font-size: 48px;
-    font-weight: 700;
-    text-align: center;
-    margin-top: 20px;
+
+.stApp {
+    background-color: #F7FBF5;
 }
 
-.subtitle {
-    font-size: 20px;
+.hero {
+    background-color: #E8F5E9;
+    padding: 45px 30px;
+    border-radius: 18px;
     text-align: center;
-    color: #666;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
+    border: 1px solid #C8E6C9;
+}
+
+.hero h1 {
+    color: #1B5E20;
+    font-size: 42px;
+    margin-bottom: 10px;
+}
+
+.hero p {
+    color: #455A64;
+    font-size: 19px;
 }
 
 .card {
+    background-color: white;
     padding: 25px;
     border-radius: 15px;
-    background-color: #f5f9f3;
-    border: 1px solid #dcebd8;
-    margin-bottom: 20px;
+    border: 1px solid #DDE8DC;
+    min-height: 180px;
+    box-shadow: 0px 3px 10px rgba(0,0,0,0.05);
 }
 
-.section-title {
+.card h3 {
+    color: #2E7D32;
+    font-size: 22px;
+}
+
+.card p {
+    color: #455A64;
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+.section {
+    color: #1B5E20;
     font-size: 30px;
-    font-weight: 600;
-    margin-top: 20px;
+    font-weight: 700;
+    margin-top: 35px;
 }
 
 .footer {
     text-align: center;
-    color: #777;
-    margin-top: 50px;
+    color: #607D8B;
+    padding: 30px;
 }
+
 </style>
 """, unsafe_allow_html=True)
 
 
-# ---------- HEADER ----------
-st.markdown(
-    '<div class="main-title">🌱 Sustainable Fertilizer Optimizer</div>',
-    unsafe_allow_html=True
-)
+# ---------- HERO ----------
+st.markdown("""
+<div class="hero">
 
-st.markdown(
-    '<div class="subtitle">Smart fertilizer recommendations for efficient, economical, and sustainable farming.</div>',
-    unsafe_allow_html=True
-)
+<h1>🌱 Sustainable Fertilizer Optimizer</h1>
+
+<p>
+Smart fertilizer recommendations for efficient,
+economical, and sustainable farming.
+</p>
+
+</div>
+""", unsafe_allow_html=True)
 
 
-# ---------- HOME INFORMATION ----------
+# ---------- FEATURES ----------
 col1, col2, col3 = st.columns(3)
 
 with col1:
     st.markdown("""
     <div class="card">
         <h3>🌾 Crop Based</h3>
-        <p>Choose your crop and receive fertilizer recommendations based on nutrient requirements.</p>
+        <p>
+        Select your crop and receive fertilizer recommendations
+        based on its nutrient requirements.
+        </p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -73,7 +104,10 @@ with col2:
     st.markdown("""
     <div class="card">
         <h3>🧪 Soil Analysis</h3>
-        <p>Enter Nitrogen, Phosphorus and Potassium values to estimate nutrient requirements.</p>
+        <p>
+        Enter soil Nitrogen, Phosphorus and Potassium values
+        to estimate the nutrient requirements.
+        </p>
     </div>
     """, unsafe_allow_html=True)
 
@@ -81,19 +115,23 @@ with col3:
     st.markdown("""
     <div class="card">
         <h3>🌍 Sustainable</h3>
-        <p>Use fertilizer more efficiently and avoid unnecessary nutrient application.</p>
+        <p>
+        Optimize fertilizer usage and reduce unnecessary
+        fertilizer application.
+        </p>
     </div>
     """, unsafe_allow_html=True)
 
 
+# ---------- CALCULATOR ----------
 st.markdown(
-    '<div class="section-title">🚀 Fertilizer Recommendation</div>',
+    '<div class="section">🌱 Fertilizer Recommendation</div>',
     unsafe_allow_html=True
 )
 
 st.write(
-    "Enter your soil nutrient values below to calculate the recommended "
-    "amount of Urea, DAP and MOP."
+    "Enter your soil nutrient values below to calculate "
+    "the recommended fertilizer quantity."
 )
 
 
@@ -107,7 +145,7 @@ with col1:
     )
 
 with col2:
-    st.info(f"Selected crop: **{crop}**")
+    st.info(f"Selected crop: {crop}")
 
 
 col1, col2, col3 = st.columns(3)
@@ -116,26 +154,33 @@ with col1:
     soil_n = st.number_input(
         "Soil Nitrogen (N)",
         min_value=0.0,
-        value=40.0
+        value=40.0,
+        step=1.0
     )
 
 with col2:
     soil_p = st.number_input(
         "Soil Phosphorus (P)",
         min_value=0.0,
-        value=25.0
+        value=25.0,
+        step=1.0
     )
 
 with col3:
     soil_k = st.number_input(
         "Soil Potassium (K)",
         min_value=0.0,
-        value=35.0
+        value=35.0,
+        step=1.0
     )
 
 
-# ---------- CALCULATION ----------
-if st.button("🌱 Optimize Fertilizer", use_container_width=True):
+# ---------- BUTTON ----------
+if st.button(
+    "🌱 Optimize Fertilizer",
+    use_container_width=True,
+    type="primary"
+):
 
     n_required = max(100 - soil_n, 0)
     p_required = max(50 - soil_p, 0)
@@ -145,9 +190,14 @@ if st.button("🌱 Optimize Fertilizer", use_container_width=True):
     dap = round(p_required / 0.46, 2)
     mop = round(k_required / 0.60, 2)
 
-    st.success("Fertilizer recommendation generated successfully!")
+    st.success(
+        "Fertilizer recommendation generated successfully!"
+    )
 
-    st.markdown("### 📊 Recommended Fertilizer")
+    st.markdown(
+        '<div class="section">📊 Recommended Fertilizer</div>',
+        unsafe_allow_html=True
+    )
 
     col1, col2, col3 = st.columns(3)
 
@@ -162,7 +212,10 @@ if st.button("🌱 Optimize Fertilizer", use_container_width=True):
 
 
 # ---------- FOOTER ----------
-st.markdown(
-    '<div class="footer">🌱 Sustainable Fertilizer Optimizer | Smart Farming Solution</div>',
-    unsafe_allow_html=True
-)
+st.markdown("""
+<div class="footer">
+🌱 Sustainable Fertilizer Optimizer
+<br>
+Smart Farming • Efficient Fertilization • Sustainable Agriculture
+</div>
+""", unsafe_allow_html=True)
